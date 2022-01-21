@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> </title>
+    <link rel='stylesheet' href='/css/style.css' />
+
+</head>
+<body>
+    <figure class="logo">
+        <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+    </figure>
+    <h1><%= movie.title %> </h1>    
+    <br>
+    <p>RATING: <%= movie.rating %> </p>
+    <p>AWARDS: <%= movie.awards %> </p>
+    <% if (movie.length) { %>
+        <p>LENGTH: <%= movie.length + ' min'%> </p>
+    <% } %>
+    <% if (movie.genre_id) { %>
+        <p>GENERO: <%= movie.genre.name%> </p>
+    <% } %> 
+    <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <br>
+    <% if(movie.actors.length > 0){ %>
+        <p>ACTORES: </p>
+        <ul>
+            <% movie.actors.forEach(actor => { %>
+                <li><%= actor.first_name + " " + actor.last_name %> </li>
+            <% }) %> 
+        </ul>
+    <% } %> 
+    <a href="/movies/edit/<%= movie.id %> "><button>EDITAR</button></a>
+    <br>
+    <br>
+    <a href="/movies/delete/<%= movie.id %> "><button>ELIMINAR</button></a>
+    <br>
+    <br>
+    <a  class="botonVolver" href="/movies"><button>Volver al Listado de Películas</button></a>
+    
+
+</body>
+</html>

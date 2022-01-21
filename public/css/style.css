@@ -1,0 +1,65 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #dddddd;
+}
+
+a {
+  color: #00aeff;
+  text-decoration: none;
+}
+img{
+  width: 100%;
+}
+figure{
+  width: 20%;
+}
+.logo{
+  margin: auto;
+  margin-bottom: 35px;
+}
+
+h1{
+  margin-bottom: 15px;
+}
+
+h2{
+  margin-bottom: 10px;
+}
+
+ul{
+  margin-bottom: 15px;
+}
+
+ul li{
+  margin-left: 40px;
+}
+
+span{
+  color: rgb(148, 30, 30);
+}
+
+button{
+  margin-top: 5px;
+  padding: 3px;
+  border-radius: 5px;
+  transition: all 5ms;
+}
+
+.botonVolver{
+  margin-top: 20px;
+}
+
+button:hover{
+  opacity: 70%;
+  box-shadow: 1px 1px slategray
+}
+
+form div{
+  margin-bottom: 8px;
+}
