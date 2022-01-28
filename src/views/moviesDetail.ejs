@@ -8,37 +8,21 @@
 
 </head>
 <body>
-    <figure class="logo">
-        <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
     <h1><%= movie.title %> </h1>    
     <br>
-    <p>RATING: <%= movie.rating %> </p>
-    <p>AWARDS: <%= movie.awards %> </p>
-    <% if (movie.length) { %>
-        <p>LENGTH: <%= movie.length + ' min'%> </p>
-    <% } %>
-    <% if (movie.genre_id) { %>
-        <p>GENERO: <%= movie.genre.name%> </p>
-    <% } %> 
-    <p>RELEASE DATE: <%= movie.release_date %> </p>
+    <p>CALIFICACIÓN: <%= movie.rating %> </p>
+    <p>PREMIOS: <%= movie.awards %> </p>
+    <p>DURACIÓN: <%= movie.length + ' min'%> </p>
+    <p>FECHA DE CREACIÓN: <%= movie.release_date %> </p>
     <br>
-    <% if(movie.actors.length > 0){ %>
-        <p>ACTORES: </p>
-        <ul>
-            <% movie.actors.forEach(actor => { %>
-                <li><%= actor.first_name + " " + actor.last_name %> </li>
-            <% }) %> 
-        </ul>
-    <% } %> 
-    <a href="/movies/edit/<%= movie.id %> "><button>EDITAR</button></a>
-    <br>
-    <br>
-    <a href="/movies/delete/<%= movie.id %> "><button>ELIMINAR</button></a>
-    <br>
-    <br>
-    <a  class="botonVolver" href="/movies"><button>Volver al Listado de Películas</button></a>
-    
+    <section>
+        <a class="botonModificar" href="/movies/edit/<%= movie.id %>">Modificar</a>
+        <a class="botonBorrar" href="/movies/delete/<%= movie.id %>">Borrar</a>
+        <a class="botonVolver" href="/movies">Listado de Películas</a>
+    </section>
 
 </body>
 </html>

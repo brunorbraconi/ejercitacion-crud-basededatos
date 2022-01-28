@@ -1,48 +1,44 @@
-module.exports = (sequelize, DataTypes) => {
-
-    let alias = "Actors";
-
+module.exports = (sequelize, dataTypes) => {
+    let alias = 'Actor';
     let cols = {
         id: {
-            type: DataTypes.BIGINT(10).UNSIGNED,
+            type: dataTypes.BIGINT(10).UNSIGNED,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
+        // created_at: dataTypes.TIMESTAMP,
+        // updated_at: dataTypes.TIMESTAMP,
         first_name: {
-            type: DataTypes.STRING(100),
+            type: dataTypes.STRING(100),
             allowNull: false
         },
         last_name: {
-            type: DataTypes.STRING(100),
+            type: dataTypes.STRING(100),
             allowNull: false
         },
         rating: {
-            type: DataTypes.DECIMAL(3,1),
-            allowNull: false            
+            type: dataTypes.DECIMAL(3,1),
+            allowNull: false
         },
-        favorite_movie_id: {
-            type: DataTypes.BIGINT(10).UNSIGNED
-        }
+        favorite_movie_id: dataTypes.BIGINT(10).UNSIGNED
     };
-
     let config = {
-        tablename: "actors",
-        timestamps: false
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: false
     }
+    const Actor = sequelize.define(alias, cols, config); 
 
-    const Actor = sequelize.define(alias, cols, config);
-
-    Actor.associate = (models) => {
-
-        Actor.belongsToMany(models.Movies, {
+    Actor.associate = function (models) {
+        Actor.belongsToMany(models.Movie, { // models.Movie -> Movies es el valor de alias en movie.js
             as: "movies",
-            through: "actor_movie",
-            foreignKey: "actor_id",
-            otherKey: "movie_id",
+            through: 'actor_movie',
+            foreignKey: 'actor_id',
+            otherKey: 'movie_id',
             timestamps: false
         })
-
     }
 
-    return Actor;
-}
+    return Actor
+};

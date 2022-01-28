@@ -10,11 +10,16 @@
 </head>
 
 <body>
-    <figure class="logo">
-        <a href="/"><img src="/img/logo-DH.png" alt="Logo Digital House"></a>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-    <br>
     <h1>LISTADO DE PELÍCULAS</h1>
+    <br>
+    <p>
+        <a class="botonAgregar" href="/movies/add">Agregar una Pelicula</a>
+        <a class="botonVolver" href="/">inicio</a>
+
+    </p>
     <br>
     <ul>
         <% for( let i = 0; i < movies.length; i++ ) { %>
@@ -22,9 +27,8 @@
             <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
         </li>
         <% } %>
+
     </ul>
-    <br>
-    <a href="/movies/add"><button>Agregar Pelicula</button></a>
 </body>
 
 </html>

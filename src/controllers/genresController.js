@@ -1,32 +1,21 @@
-const db = require("../database/models/index");
+const db = require('../database/models');
 const sequelize = db.sequelize;
-const Op = db.Sequelize.Op;
+
 
 const genresController = {
-    
-    list: (req, res) => {
-        db.Genres.findAll()
+    'list': (req, res) => {
+        db.Genre.findAll()
             .then(genres => {
-                res.render("genresList", { genres })
-            })
-            .catch(err => {
-                res.send(err)
+                res.render('genresList.ejs', {genres})
             })
     },
-
-    detail: (req, res) => {
-        let id = req.params.id;
-
-        db.Genres.findByPk(id, {
-            include: [{association: "movies"}]
-        })
+    'detail': (req, res) => {
+        db.Genre.findByPk(req.params.id)
             .then(genre => {
-                res.render("genresDetail", { genre });
-            })
-            .catch(err => {
-                res.send(err)
-            })
+                res.render('genresDetail.ejs', {genre});
+            });
     }
+
 }
 
 module.exports = genresController;

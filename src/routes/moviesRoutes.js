@@ -2,23 +2,16 @@ const express = require('express');
 const router = express.Router();
 const moviesController = require('../controllers/moviesController');
 
-//Rutas  para home, ordenadas por estreno, ordenadas por rating y detalle del producto
-router.get('/', moviesController.list);
-
-router.get('/new', moviesController.new);
-
-router.get('/recommended', moviesController.recommended);
-
-router.get('/detail/:id', moviesController.detail)
-
+router.get('/movies', moviesController.list);
+router.get('/movies/new', moviesController.new);
+router.get('/movies/recommended', moviesController.recomended);
+router.get('/movies/detail/:id', moviesController.detail);
 //Rutas exigidas para la creación del CRUD
-router.get('/add', moviesController.add);
-router.post('/create', moviesController.create);
-
-router.get('/edit/:id', moviesController.edit);
-router.put('/update/:id', moviesController.update);
-
-router.get('/delete/:id', moviesController.delete);
-router.delete('/delete/:id', moviesController.destroy);
+router.get('/movies/add', moviesController.add);
+router.post('/movies/create', moviesController.create);
+router.get('/movies/edit/:id', moviesController.edit);
+router.put('/movies/update/:id', moviesController.update);
+router.get('/movies/delete/:id', moviesController.delete);
+router.delete('/movies/delete/:id', moviesController.destroy);
 
 module.exports = router;
