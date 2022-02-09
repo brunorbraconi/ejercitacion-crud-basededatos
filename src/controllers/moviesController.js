@@ -90,7 +90,7 @@ const moviesController = {
         .all([promMovies, promGenres, promActors])
         .then(([Movie, allGenres, allActors]) => {
             //Movie.release_date = moment( new Date(Movie.release_date)).toLocaleDateString();
-            Movie.release_date = moment( new Date(Movie.release_date)).format('L');
+            Movie.release_date = moment(Movie.release_date).locale('es-us').format('YYYY-MM-DD');
             //new Date("Sun Jan 03 1999 21:00:00 GMT-0300 (hora estándar de Argentina)").toLocaleDateString()
             //return res.send(Movie.release_date);
             return res.render(path.resolve(__dirname, '..', 'views',  'moviesEdit'), {Movie,allGenres,allActors})})
